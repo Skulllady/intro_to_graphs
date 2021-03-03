@@ -12,7 +12,19 @@ class Graph {
   }
   //path between two nodes
   addEdges(srcValue, destValue) {
-    // Code goes here ...
+    if(!srcValue in this.adjList) {
+      this.addVertex(srcValue)
+    }
+
+    if(!destValue in this.adjList) {
+      this.addVertex(destValue)
+    }
+
+    let srcVertex = this.adjList[srcValue]
+    let destVertex = this.adjList[destValue]
+
+    srcVertex.push(destVertex)
+    destVertex.push(srcVertex)
   }
 
   buildGraph(edges) {
