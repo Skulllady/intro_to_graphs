@@ -32,7 +32,7 @@ class Graph {
       const element = edges[index];
       this.addEdges(element[0], element[1])
     }
-    console.log("after: ", this.adjList)
+    // console.log("after: ", this.adjList)
 
     return this.adjList
 
@@ -77,19 +77,20 @@ class Graph {
 
   depthFirstTraversalRecursive(startingVertex, visited = new Set(), vertices = []) {
     vertices.push(startingVertex);      //startingVertex = "a"
-    if (Array.isArray(startingVertex))
-      if (vertices.length === 0) return []
-    let node = vertices.pop;            //node = "a"
+
+    if (vertices.length === 0) return []
+    let node = vertices.pop();            //node = "a"
     //base case => does visiting have a starting index
     if (visited.has(node)) {
-      return;  // come back
+      // return;  // come back
     } else {
       visited.add(node);                //set = {a, }
     }
-    startingVertex = node;
+    console.log("adjList", this.adjList)
+    console.log("node ", node)
     vertices.push(...this.adjList[node]);
-    Array.from(visited);
-    depthFirstTraversalRecursive(startingVertex, visited, vertices)
+    // Array.from(visited);
+    return depthFirstTraversalRecursive(node, visited, vertices)
   }
 }
 module.exports = {
