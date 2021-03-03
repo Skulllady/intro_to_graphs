@@ -45,7 +45,7 @@ class Graph {
 
     while (queue.length) {
       let current = queue.shift(); //remove first element and assign it to current
-      if(visited.has(current)) {
+      if (visited.has(current)) {
         continue;
       }
 
@@ -60,9 +60,9 @@ class Graph {
     let visited = new Set()
     let queue = [startingVertex]
 
-    while(queue.length) {
+    while (queue.length) {
       let current = queue.pop()
-      if(visited.has(current)) {
+      if (visited.has(current)) {
         continue;
       }
 
@@ -76,11 +76,22 @@ class Graph {
   }
 
   depthFirstTraversalRecursive(startingVertex, visited = new Set(), vertices = []) {
-    // Code goes here ...
+    vertices.push(startingVertex);      //startingVertex = "a"
+    if (Array.isArray(startingVertex))
+      if (vertices.length === 0) return []
+    let node = vertices.pop;            //node = "a"
+    //base case => does visiting have a starting index
+    if (visited.has(node)) {
+      return;  // come back
+    } else {
+      visited.add(node);                //set = {a, }
+    }
+    startingVertex = node;
+    vertices.push(...this.adjList[node]);
+    Array.from(visited);
+    depthFirstTraversalRecursive(startingVertex, visited, vertices)
   }
-
 }
-
 module.exports = {
   Graph
 };
