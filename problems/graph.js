@@ -32,7 +32,7 @@ class Graph {
       const element = edges[index];
       this.addEdges(element[0], element[1])
     }
-    // console.log("after: ", this.adjList)
+    console.log("after: ", this.adjList)
 
     return this.adjList
 
@@ -40,6 +40,16 @@ class Graph {
 
   breadthFirstTraversal(startingVertex) {
     // Code goes here ...
+    let visited = [];
+    let queue = [startingVertex];
+    let current = startingVertex;
+
+    while (queue.length) {
+      current = queue.shift(); //remove first element and assign it to current
+      visited.push();
+    }
+
+
   }
 
   depthFirstTraversalIterative(startingVertex) {
