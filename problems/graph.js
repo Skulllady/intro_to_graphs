@@ -40,20 +40,39 @@ class Graph {
 
   breadthFirstTraversal(startingVertex) {
     // Code goes here ...
-    let visited = [];
+    let visited = new Set();
     let queue = [startingVertex];
-    let current = startingVertex;
 
     while (queue.length) {
-      current = queue.shift(); //remove first element and assign it to current
-      visited.push();
+      let current = queue.shift(); //remove first element and assign it to current
+      if(visited.has(current)) {
+        continue;
+      }
+
+      visited.add(current)
+      queue.push(...this.adjList[current])
     }
 
-
+    return Array.from(visited)
   }
 
   depthFirstTraversalIterative(startingVertex) {
-    // Code goes here ...
+    let visited = new Set()
+    let queue = [startingVertex]
+
+    while(queue.length) {
+      let current = queue.pop()
+      if(visited.has(current)) {
+        continue;
+      }
+
+      visited.add(current)
+
+      queue.push(...this.adjList[current])
+    }
+
+    return Array.from(visited)
+
   }
 
   depthFirstTraversalRecursive(startingVertex, visited = new Set(), vertices = []) {
