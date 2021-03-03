@@ -10,25 +10,25 @@ class Graph {
       this.adjList[vertex] = new Array();
     }
   }
-  //path between two nodes
+  //creating path between two nodes
   addEdges(srcValue, destValue) {
-    if(!srcValue in this.adjList) {
-      this.addVertex(srcValue)
-    }
+    //addVertex
+    this.addVertex(srcValue);
+    //addVertex
+    this.addVertex(destValue)
 
-    if(!destValue in this.adjList) {
-      this.addVertex(destValue)
-    }
+    //creating variable names and assigning to new value, which is an []
+    let srcVertex = this.adjList[srcValue]  //[]
+    let destVertex = this.adjList[destValue]  //[]
 
-    let srcVertex = this.adjList[srcValue]
-    let destVertex = this.adjList[destValue]
-
-    srcVertex.push(destVertex)
-    destVertex.push(srcVertex)
+    srcVertex.push(destValue)
+    destVertex.push(srcValue)
+    // console.log("srcVertex array", srcVertex);
   }
 
-  buildGraph(edges) {
+  buildGraph() {
     // Code goes here ...
+    console.log("Object:", this.adjList)
   }
 
   breadthFirstTraversal(startingVertex) {
