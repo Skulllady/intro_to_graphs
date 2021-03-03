@@ -26,9 +26,16 @@ class Graph {
     // console.log("srcVertex array", srcVertex);
   }
 
-  buildGraph() {
-    // Code goes here ...
-    console.log("Object:", this.adjList)
+  buildGraph(edges) {
+
+    for (let index = 0; index < edges.length; index++) {
+      const element = edges[index];
+      this.addEdges(element[0], element[1])
+    }
+    // console.log("after: ", this.adjList)
+
+    return this.adjList
+
   }
 
   breadthFirstTraversal(startingVertex) {
