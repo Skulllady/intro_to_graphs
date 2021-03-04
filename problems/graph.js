@@ -75,23 +75,17 @@ class Graph {
 
   }
 
-  depthFirstTraversalRecursive(startingVertex, visited = new Set(), vertices = []) {
-    let node = startingVertex
-    node = vertices.pop();            //node = "a"
-    if (vertices.length === 0) return []
+  depthFirstTraversalRecursive(node, visited = new Set()) {
+
     //base case => does visiting have a starting index
-    if (visited.has(node)) {
-      // return;  // come back
-    } else {
-      visited.add(node);                //set = {a, }
-    }
-    console.log("adjList", this.adjList)
-    console.log("node ", node)
-    vertices.push(...this.adjList[node]);
-    // Array.from(visited);
-    console.log("visited ", visited)
-    console.log("vertices ", vertices)
-    return depthFirstTraversalRecursive(node, visited, vertices)
+    if (visited.has(node)) return
+
+    visited.add(node);
+
+    this.adjList[node].forEach((neighbor) => {
+      this.depthFirstTraversalRecursive(neighbor, visited)
+    })
+    return Array.from(visited)
   }
 }
 module.exports = {
